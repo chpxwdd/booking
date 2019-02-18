@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 import { PageHeader } from 'react-bootstrap'
-import Autocomplete from '../UI/Autocomplete'
+// import Autocomplete from '../UI/Autocomplete'
+import UI from '../UI'
 
 export default class Home extends Component {
   render() {
@@ -10,7 +11,7 @@ export default class Home extends Component {
         <PageHeader>
           Home <small>component</small>
         </PageHeader>
-        <Autocomplete name="destinations" />
+        <UI.Autocomplete name="destinations" url="" keyField="" valueField="" />
       </div>
     )
   }

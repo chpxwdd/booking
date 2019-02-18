@@ -6,25 +6,15 @@ export default class AutocompleteResult extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      collapsed: true,
-      list: [],
       selectedItem: null,
     }
   }
-
-  componentDidMount() {
-    this.setState({
-      list: this.props.list,
-    })
-  }
-
-  // componentDidUpdate() { }
 
   render() {
     return (
       <div>
         <ListGroup as="ul">
-          {this.state.list.map((item, key) => {
+          {this.props.list.map((item, key) => {
             return (
               <AutocompleteRow
                 key={key}

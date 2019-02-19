@@ -13,17 +13,15 @@ export default class AutocompleteResult extends Component {
   render() {
     return (
       <div>
-        <ListGroup as="ul">
+        <ul>
           {this.props.list.map((item, key) => {
             return (
-              <AutocompleteRow
-                key={key}
-                code={item.airportId}
-                context={item.label}
-              />
+              <li key={key} code={item.airportId}>
+                {item.label}
+              </li>
             )
           })}
-        </ListGroup>
+        </ul>
       </div>
     )
   }

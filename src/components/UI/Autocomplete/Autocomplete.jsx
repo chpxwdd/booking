@@ -18,30 +18,29 @@ export default class Autocomplete extends Component {
 
     fetch('https://m.sodis.ru/airportservlet2?term=' + term)
       .then(res => res.json())
-      .then(res => this.setState({ items: res, isFetching: false }))
-      .catch(err => {
-        console.log(err)
-        this.setState({ isFetching: false, error: err })
+      .then(res => {
+        this.setState({ items: res, isFetching: false })
+      })
+      .catch(() => {
+        this.setState({ items: res, isFetching: false, error: err })
       })
   }
 
   render() {
     const { items, isFetching, error } = this.state
-    if (error) return <div>{`Error: ${error.message}`}</div>
 
     return (
       <div>
         <input type="text" onChange={this.handleChange.bind(this)} />
         {!isFetching && (
           <ul>
-            {items.length > 0 &&
-              items.map((item, key) => {
-                return (
-                  <li key={key} code={item.airportId}>
-                    {item.label}
-                  </li>
-                )
-              })}
+            {items.map((item, key) => {
+              return (
+                <li key={key} code={item.airportId}>
+                  {item.label}
+                </li>
+              )
+            })}
           </ul>
         )}
       </div>
